@@ -3,6 +3,7 @@ package com.jwen.expandrecycler.swipemenu;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ public class SwipeMenuView extends LinearLayout {
 
 
     private OnMenuClickListener onMenuItemClick;
+    private int DEFAULT_POSITION = -1;
     public void setOnMenuItemClick(OnMenuClickListener onMenuItemClick){
         this.onMenuItemClick = onMenuItemClick;
     }
@@ -68,7 +70,7 @@ public class SwipeMenuView extends LinearLayout {
             @Override
             public void onClick(View v) {
                 if(onMenuItemClick != null){
-                    onMenuItemClick.onMenuItemClick(tag);
+                    onMenuItemClick.onMenuClick(tag,DEFAULT_POSITION);
                 }
             }
         });

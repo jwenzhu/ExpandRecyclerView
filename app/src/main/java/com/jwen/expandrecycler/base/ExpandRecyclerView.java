@@ -108,6 +108,7 @@ public class ExpandRecyclerView extends RecyclerView {
                }
                break;
            case MotionEvent.ACTION_UP:
+
                break;
 
        }
@@ -136,6 +137,12 @@ public class ExpandRecyclerView extends RecyclerView {
         }
         return itemView;
     }
+
+
+
+
+
+
 
 
 }

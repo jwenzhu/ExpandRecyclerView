@@ -3,6 +3,7 @@ package com.jwen.expandrecycler.swipemenu;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -22,7 +23,6 @@ public class SwipeMenuLayout  extends FrameLayout {
     private int mContentViewId = -1;
     private int mMenuWidth = 0;
     private boolean mIsMenuOpen = false;
-    private Context mContext;
     private OverScroller mScroller;
 
     public SwipeMenuLayout(Context context) {
@@ -36,7 +36,6 @@ public class SwipeMenuLayout  extends FrameLayout {
     public SwipeMenuLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        mContext = context;
         mScroller = new OverScroller(context);
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SwipeMenuLayout);
@@ -59,6 +58,29 @@ public class SwipeMenuLayout  extends FrameLayout {
             vContent = findViewById(mContentViewId);
         }
     }
+
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        boolean isIntercept =  super.onInterceptTouchEvent(ev);
+        float disX = 0;
+        switch (ev.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                startX = ev.getX();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                break;
+            case MotionEvent.ACTION_UP:
+                disX = startX - ev.getX();
+
+                Log.i("jwen", String.valueOf(disX));
+                if(disX > 5){
+                    return false;
+                }
+        }
+        return isIntercept;
+    }
+
     float startX = 0;
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -90,12 +112,9 @@ public class SwipeMenuLayout  extends FrameLayout {
                 }
                 if(disX > mMenuWidth/2){
                     smoothOpenMenu();
-                    mIsMenuOpen = true;
                 }else{
                     smoothCloseMenu();
-                    mIsMenuOpen = false;
                 }
-
                 return false;
             case MotionEvent.ACTION_CANCEL:
                 if (!mScroller.isFinished())
@@ -111,6 +130,7 @@ public class SwipeMenuLayout  extends FrameLayout {
     public void smoothCloseMenu(){
         int scrollX =  getScrollX();
         mScroller.startScroll(-Math.abs(scrollX), 0, Math.abs(scrollX), 0, DEFAULT_DURATION);
+        mIsMenuOpen = false;
         invalidate();
     }
 
@@ -121,6 +141,7 @@ public class SwipeMenuLayout  extends FrameLayout {
     public void smoothOpenMenu() {
         int scrollX = getScrollX();
         mScroller.startScroll(Math.abs(scrollX), 0, mMenuWidth - Math.abs(scrollX), 0, DEFAULT_DURATION);
+        mIsMenuOpen = true;
         invalidate();
     }
 
