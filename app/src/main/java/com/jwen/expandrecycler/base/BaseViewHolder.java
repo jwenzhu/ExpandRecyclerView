@@ -17,29 +17,6 @@ import com.jwen.expandrecycler.swipemenu.SwipeMenuView;
  */
 public abstract class BaseViewHolder<V>  extends RecyclerView.ViewHolder  implements View.OnClickListener,OnMenuClickListener, View.OnLongClickListener {
 
-
-
-    private OnItemClickListener onItemClickListener;
-    private OnMenuClickListener onMenuClickListener;
-    private OnLongClickListener onLongClickListener;
-    private OnIClickListener onIClickListener;
-
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
-        this.onItemClickListener = onItemClickListener;
-    }
-    public void setOnMenuClickListener(OnMenuClickListener onMenuClickListener){
-        this.onMenuClickListener = onMenuClickListener;
-    }
-
-    public void setOnLongClickListener(OnLongClickListener onLongClickListener){
-        this.onLongClickListener = onLongClickListener;
-    }
-    public void setOnIClickListener(OnIClickListener onIClickListener){
-        this.onIClickListener = onIClickListener;
-    }
-
-
-
     public BaseViewHolder(View itemView) {
         super(itemView);
         itemView.setOnClickListener(this);
@@ -80,4 +57,25 @@ public abstract class BaseViewHolder<V>  extends RecyclerView.ViewHolder  implem
         }
         return true;
     }
+
+    private OnItemClickListener onItemClickListener;
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    private OnMenuClickListener onMenuClickListener;
+    public void setOnMenuClickListener(OnMenuClickListener onMenuClickListener){
+        this.onMenuClickListener = onMenuClickListener;
+    }
+
+    private OnLongClickListener onLongClickListener;
+    public void setOnLongClickListener(OnLongClickListener onLongClickListener){
+        this.onLongClickListener = onLongClickListener;
+    }
+
+    private OnIClickListener onIClickListener;
+    public void setOnIClickListener(OnIClickListener onIClickListener){
+        this.onIClickListener = onIClickListener;
+    }
+
 }
