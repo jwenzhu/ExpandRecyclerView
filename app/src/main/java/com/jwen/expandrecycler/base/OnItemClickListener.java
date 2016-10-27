@@ -6,6 +6,10 @@ package com.jwen.expandrecycler.base;
  */
 public interface OnItemClickListener {
 
+    /**
+     * 条目点击事件
+     * @param position
+     */
     void onItemClick(int position);
 
 }

@@ -22,7 +22,7 @@ public class SwipeMenuView extends LinearLayout {
 
 
     private OnMenuClickListener onMenuItemClick;
-    private int DEFAULT_POSITION = -1;
+    private int DEFAULT_POSITION = -1;//默认位置
     public void setOnMenuItemClick(OnMenuClickListener onMenuItemClick){
         this.onMenuItemClick = onMenuItemClick;
     }
@@ -45,7 +45,9 @@ public class SwipeMenuView extends LinearLayout {
         init();
     }
 
-
+    /**
+     * 初始化
+     */
     private void init() {
         Menu add = new Menu("添加",R.drawable.ic_add_black_24dp,R.drawable.selector_red);
         Menu update = new Menu("修改",R.drawable.ic_build_black_24dp,R.drawable.selector_green);
@@ -56,6 +58,11 @@ public class SwipeMenuView extends LinearLayout {
         addItem(edit,"edit");
     }
 
+    /**
+     * 添加item
+     * @param menu
+     * @param tag
+     */
     private void addItem(final Menu menu, final String tag) {
         LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
         View view = LayoutInflater.from(mContext).inflate(R.layout.layout_swipemenu,null);

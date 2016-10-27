@@ -6,9 +6,9 @@ package com.jwen.expandrecycler.swipemenu;
  */
 public class Menu {
 
-    private String title;
-    private int iconId = -1;
-    private int drawableId = -1;
+    private String title;//标题
+    private int iconId = -1;//图标
+    private int drawableId = -1;//背景
 
     public Menu(String title, int iconId, int drawableId) {
         this.title = title;

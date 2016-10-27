@@ -7,6 +7,11 @@ package com.jwen.expandrecycler.swipemenu;
 public interface OnMenuClickListener {
 
 
+    /**
+     * 菜单点击
+     * @param tag
+     * @param position
+     */
     void onMenuClick(String tag,int position);
 
 }

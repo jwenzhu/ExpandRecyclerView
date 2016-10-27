@@ -18,11 +18,11 @@ import com.jwen.expandrecycler.R;
  */
 public class SwipeMenuLayout  extends FrameLayout {
 
-    public static int DEFAULT_DURATION = 200;
-    private int mMenuViewId = -1;
-    private int mContentViewId = -1;
-    private int mMenuWidth = 0;
-    private boolean mIsMenuOpen = false;
+    public static int DEFAULT_DURATION = 200;//默认动画时间
+    private int mMenuViewId = -1;//菜单id
+    private int mContentViewId = -1;//条目id
+    private int mMenuWidth = 0;//菜单宽度
+    private boolean mIsMenuOpen = false;//菜单是否打开
     private OverScroller mScroller;
 
     public SwipeMenuLayout(Context context) {
@@ -73,7 +73,6 @@ public class SwipeMenuLayout  extends FrameLayout {
             case MotionEvent.ACTION_UP:
                 disX = startX - ev.getX();
 
-                Log.i("jwen", String.valueOf(disX));
                 if(disX > 5){
                     return false;
                 }
@@ -125,8 +124,9 @@ public class SwipeMenuLayout  extends FrameLayout {
     }
 
 
-
-
+    /**
+     * 关闭菜单
+     */
     public void smoothCloseMenu(){
         int scrollX =  getScrollX();
         mScroller.startScroll(-Math.abs(scrollX), 0, Math.abs(scrollX), 0, DEFAULT_DURATION);
@@ -134,10 +134,17 @@ public class SwipeMenuLayout  extends FrameLayout {
         invalidate();
     }
 
+    /**
+     *
+     * @return mIsMenuOpen
+     */
     public boolean isMenuOpen(){
         return mIsMenuOpen;
     }
 
+    /**
+     * 打开菜单
+     */
     public void smoothOpenMenu() {
         int scrollX = getScrollX();
         mScroller.startScroll(Math.abs(scrollX), 0, mMenuWidth - Math.abs(scrollX), 0, DEFAULT_DURATION);

@@ -8,6 +8,11 @@ import android.view.View;
  */
 public interface OnIClickListener {
 
+    /**
+     * 列表点击
+     * @param position
+     * @param view
+     */
     void onIClick(int position,View view);
 
 }

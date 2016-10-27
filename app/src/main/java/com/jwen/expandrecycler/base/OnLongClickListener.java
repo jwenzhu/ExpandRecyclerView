@@ -6,6 +6,10 @@ package com.jwen.expandrecycler.base;
  */
 public interface OnLongClickListener {
 
+    /**
+     * 长按点击事件
+     * @param position
+     */
     void onLongClick(int position);
 
 }
