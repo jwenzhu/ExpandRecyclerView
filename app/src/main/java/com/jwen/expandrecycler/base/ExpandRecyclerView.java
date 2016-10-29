@@ -83,6 +83,13 @@ public class ExpandRecyclerView extends RecyclerView {
     }
 
 
+    /**
+     * 是否是menu事件
+     * @param x
+     * @param y
+     * @param defaultValue
+     * @return
+     */
     private boolean isMenuAction(int x,int y, boolean defaultValue){
         int disX =  startX - x;
         int disY =  startY - y;
